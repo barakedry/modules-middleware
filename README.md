@@ -4,11 +4,19 @@
 express middleware for serving node modules to client side,|
 This is useful for serving client side apps structued as node package module, containing a package.json with npm dependencies.
 
-* Serves module directory assets 
-* Serves dependecies the package.json using require.resolve starting from the root module.
-* transforms .js, .jsm and .html es6 module imports specifying package name to a valid browser ES6 path.
-(eg: ``` import {Element} from '@polymer/polyer';``` transforms into ``` import {Element} from '/node_modules/@polymer/polyer';```)
-* works perfectly with monorepos
+modules-middleware:
+* Serves module directory assets
+* Serves dependencies from package.json (resolve i with node's require.resolve starting from the module path).
+** works perfectly with monorepos
+* transforms .js, .jsm and .html sources containing es6 module imports speficiying package names to a valid browser ES6 paths.
+```js 
+import {Element} from '@polymer/polyer';
+``` 
+transforms into 
+```js
+import {Element} from '/node_modules/@polymer/polyer';
+```
+
 
 
 ## Install
