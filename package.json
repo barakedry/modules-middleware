@@ -1,0 +1,32 @@
+{
+  "name": "modules-middleware",
+  "version": "0.5.0",
+  "description": "express middleware for serving npm modules to client side",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barakedry/modules-middleware.git"
+  },
+  "keywords": [
+    "express",
+    "middleware",
+    "es6",
+    "modules",
+    "static"
+  ],
+  "author": "Barak Edry",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/barakedry/modules-middleware/issues"
+  },
+  "homepage": "https://github.com/barakedry/modules-middleware#readme",
+  "dependencies": {
+    "mime": "^2.3.1",
+    "parseurl": "^1.3.2",
+    "send": "^0.16.2",
+    "stream-replace": "^1.0.0"
+  }
+}
