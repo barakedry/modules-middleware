@@ -53,7 +53,8 @@ app.use(modulesMiddleware('./frontend'));
 app.listen(3000)
 ```
 
-if you are using a monorepo containing a package of your client side code
+#### with monorepo
+if you are using a monorepo containing a package of your client side code you may use require.resolve as the module path
 
 ```js
 var express = require('express')
