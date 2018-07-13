@@ -36,9 +36,8 @@ Create a new middleware function to serve files from within a given module path.
 #### Options
 ##### moduleNamePrefix
 
-Enable or disable accepting ranged requests, defaults to true.
-Disabling this will not send `Accept-Ranges` and ignore the contents
-of the `Range` request header.
+The prefix of the path on client side transformed sources, defaults to "node_modules".
+
 
 ### Serving using express
 
