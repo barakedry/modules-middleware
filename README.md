@@ -5,7 +5,7 @@ express middleware for serving node modules to client side.
 This is useful for serving client side apps structued as node package module, containing a package.json with npm dependencies.
 
 modules-middleware:
-* Serves module sources and static assets from the module package
+* Serves module sources and static assets from the module directory
 * Serves dependencies defined in package.json (resolves using node's require.resolve starting from the module path).
 ** Works perfectly with [monorepos](https://github.com/babel/babel/blob/master/doc/design/monorepo.md)
 * transforms .js, .jsm and .html sources containing es6 module imports that speficy package names to a valid browser ES6 paths.
