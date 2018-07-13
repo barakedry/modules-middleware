@@ -7,7 +7,7 @@ This is useful for serving client side apps structued as node package module, co
 modules-middleware:
 * Serves module sources and static assets from the module package
 * Serves dependencies defined in package.json (resolves using node's require.resolve starting from the module path).
-** Works perfectly with monorepos
+** Works perfectly with [monorepos](https://github.com/babel/babel/blob/master/doc/design/monorepo.md)
 * transforms .js, .jsm and .html sources containing es6 module imports that speficy package names to a valid browser ES6 paths.
 ```js 
 import {Element} from '@polymer/polyer';
