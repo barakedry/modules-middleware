@@ -36,7 +36,7 @@ Create a new middleware function to serve files from within a given module path.
 #### Options
 ##### moduleNamePrefix
 
-The prefix of the path on client side transformed sources, defaults to "node_modules".
+The prefix of packages urls for transformed client side sources, defaults to "node_modules".
 
 
 ### Serving using express
