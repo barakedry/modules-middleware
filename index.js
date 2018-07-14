@@ -40,6 +40,20 @@ function getPackageDescriptor(module, modulePath, cb) {
 
 }
 
+function replaceLogic(startWith, pathPrefix) {
+    return function (fullMatch, qouteSign) {
+        const packageName = fullMatch.split(qouteSign)[1];
+        let pathParts = [startWith, qouteSign , '/', pathPrefix, '/', packageName];
+        const endsWithFileExtOrSlash = /.*(\/|\.\w{1,4})+$/gm;
+        if (!endsWithFileExtOrSlash.test(packageName)) {
+            pathParts.push('/');
+        }
+        pathParts.push(qouteSign);
+        return pathParts.join('');
+    };
+}
+
+
 function createMiddleware(module, options = {}) {
 
     const resolvedModulePath = {};
@@ -94,7 +108,7 @@ function createMiddleware(module, options = {}) {
                 let moduleFilePath = resolvedModulePath[modules[moduleIndex]];
                 root = path.dirname(moduleFilePath);
                 pathname = pathname.substr(pathname.indexOf(modules[moduleIndex]) + moduleName.length);
-                if (!pathname) {
+                if (!pathname || pathname === '/') {
                     pathname = path.basename(moduleFilePath);
                 }
             }
@@ -109,14 +123,8 @@ function createMiddleware(module, options = {}) {
         }
 
         transform = extention === '.js' || extention === '.jsm' || extention === '.html' || extention === '.htm';
-
-        const replaceFromPath = replace(/from '(\w|@)/gm, (fullMatch, match) => {
-            return 'from \'/' + options.moduleNamePrefix + '/' + match;
-        });
-
-        const replaceImportPath = replace(/import '(\w|@)/gm, (fullMatch, match) => {
-            return 'import \'/' + options.moduleNamePrefix + '/' + match;
-        });
+        const replaceFromPath = replace(/from ('|")(\w|@).*('|")/gm, replaceLogic('from ', options.moduleNamePrefix));
+        const replaceImportPath = replace(/import ('|")(\w|@).*('|")/gm, replaceLogic('import ', options.moduleNamePrefix));
 
         if (transform) {
 
