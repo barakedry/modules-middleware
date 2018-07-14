@@ -10,7 +10,7 @@ modules-middleware:
 * works perfectly with [monorepos](https://github.com/babel/babel/blob/master/doc/design/monorepo.md)
 * transforms package names to valid browser ES6 paths when serving source files (.js, .jsm and .html) for module sources and and its depenecies (eg:  
 `import {Element} from '@polymer/polyer';`  transforms into  
-`import {Element} from /node_modules/@polymer/polyer';`
+`import {Element} from '/node_modules/@polymer/polyer';`
 
 
 
