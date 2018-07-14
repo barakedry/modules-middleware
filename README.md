@@ -1,32 +1,28 @@
 # modules-middleware
 [![NPM Version][npm-image]][npm-url]
 
-express middleware for serving node modules to client side.
-This is useful for serving client side apps structued as node package module, containing a package.json with npm dependencies.
+Express middleware for serving node modules to client side.  
+Useful for serving client side apps structued as node module package, containing a package.json and dependencies.
 
 modules-middleware:
 * Serves sources and static assets from the module directory
 * Serves sources and static assets of module dependencies defined in package.json (resolves using node's require.resolve starting from the module directory)
 * works perfectly with [monorepos](https://github.com/babel/babel/blob/master/doc/design/monorepo.md)
-* transforms node package names to valid browser ES6 paths when serving source files (.js, .jsm and .html) of the module and its depenecies
-```js 
-import {Element} from '@polymer/polyer';
-``` 
-transforms into 
-```js
-import {Element} from '/node_modules/@polymer/polyer';
-```
+* transforms package names to valid browser ES6 paths when serving .js, .jsm and .html source files of the module and depenecies.  
+for example, a js module containing an ES6 import such as:  
+`import {Element} from '@polymer/polymer';`  will transform into  
+`import {Element} from '/node_modules/@polymer/polymer';`
 
 
 
 ## Install
 
-This is a [Node.js](https://nodejs.org/en/) module available through the
-[npm registry](https://www.npmjs.com/). Installation is done using the
-[`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally):
-
 ```sh
 $ npm install modules-middleware
+```
+or
+```sh
+$ yarn add modules-middleware
 ```
 
 ## API
