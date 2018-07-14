@@ -1,21 +1,16 @@
 # modules-middleware
 [![NPM Version][npm-image]][npm-url]
 
-express middleware for serving node modules to client side.
-This is useful for serving client side apps structued as node package module, containing a package.json with npm dependencies.
+Express middleware for serving node modules to client side.  
+Useful for serving client side apps structued as node module package, containing a package.json and dependencies.
 
 modules-middleware:
 * Serves sources and static assets from the module directory
 * Serves sources and static assets of module dependencies defined in package.json (resolves using node's require.resolve starting from the module directory)
 * works perfectly with [monorepos](https://github.com/babel/babel/blob/master/doc/design/monorepo.md)
-* transforms node package names to valid browser ES6 paths when serving source files (.js, .jsm and .html) of the module and its depenecies
-```js 
-import {Element} from '@polymer/polyer';
-``` 
-transforms into 
-```js
-import {Element} from '/node_modules/@polymer/polyer';
-```
+* transforms package names to valid browser ES6 paths when serving source files (.js, .jsm and .html) for module sources and and its depenecies (eg:  
+`import {Element} from '@polymer/polyer';`  transforms into `import {Element} from /node_modules/@polymer/polyer';
+`
 
 
 
