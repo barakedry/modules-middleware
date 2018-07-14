@@ -9,8 +9,8 @@ modules-middleware:
 * Serves sources and static assets of module dependencies defined in package.json (resolves using node's require.resolve starting from the module directory)
 * works perfectly with [monorepos](https://github.com/babel/babel/blob/master/doc/design/monorepo.md)
 * transforms package names to valid browser ES6 paths when serving source files (.js, .jsm and .html) for module sources and and its depenecies (eg:  
-`import {Element} from '@polymer/polyer';`  transforms into `import {Element} from /node_modules/@polymer/polyer';
-`
+`import {Element} from '@polymer/polyer';`  transforms into  
+`import {Element} from /node_modules/@polymer/polyer';`
 
 
 
