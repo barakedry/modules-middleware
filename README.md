@@ -10,11 +10,11 @@ modules-middleware:
 * works with [monorepos](https://github.com/babel/babel/blob/master/doc/design/monorepo.md)
 * transforms package names to valid browser ES6 paths when serving .js, .jsm and .html source files of the module and dependencies.
 for example, a js module containing an ES6 import such as:  
-`import { PolymerElement } from '@polymer/polymer';`  will transform into
+`import { PolymerElement } from '@polymer/polymer';` will transform into  
 `import { PolymerElement } from '/node_modules/@polymer/polymer/';`
-** Support node.js require() flexibility, (omitting .js extension, implying directory name containing an index.js file, etc..)
-** Multiple packages sharing the same dependency at the same version will result in the same client url (for caching)
-** Multiple packages sharing the same dependency with different versions will result in a different client url
+   * Support node.js require() flexibility, (omitting .js extension, implying directory name containing an index.js file, etc..)
+   * Multiple packages sharing the same dependency at the same version will result in the same client url (for caching)
+   * Multiple packages sharing the same dependency with different versions will result in a different client url
 
 
 
