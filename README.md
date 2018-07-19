@@ -7,11 +7,14 @@ Useful for serving client side apps structued as node module package, containing
 modules-middleware:
 * Serves sources and static assets from the module directory
 * Serves sources and static assets of module dependencies defined in package.json (resolves using node's require.resolve starting from the module directory)
-* works perfectly with [monorepos](https://github.com/babel/babel/blob/master/doc/design/monorepo.md)
-* transforms package names to valid browser ES6 paths when serving .js, .jsm and .html source files of the module and depenecies.  
+* works with [monorepos](https://github.com/babel/babel/blob/master/doc/design/monorepo.md)
+* transforms package names to valid browser ES6 paths when serving .js, .jsm and .html source files of the module and dependencies.
 for example, a js module containing an ES6 import such as:  
-`import {Element} from '@polymer/polymer';`  will transform into  
-`import {Element} from '/node_modules/@polymer/polymer';`
+`import { PolymerElement } from '@polymer/polymer';`  will transform into
+`import { PolymerElement } from '/node_modules/@polymer/polymer/';`
+** Support node.js require() flexibility, (omitting .js extension, implying directory name containing an index.js file, etc..)
+** Multiple packages sharing the same dependency at the same version will result in the same client url (for caching)
+** Multiple packages sharing the same dependency with different versions will result in a different client url
 
 
 
@@ -38,7 +41,7 @@ var modulesMiddleware = require('modules-middleware')
 Create a new middleware function to serve files from within a given module path. 
 
 #### Options
-##### moduleNamePrefix
+##### modulesDirectoryUrlName
 
 The prefix of packages urls for transformed client side sources, defaults to "node_modules".
 
