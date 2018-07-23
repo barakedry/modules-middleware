@@ -51,7 +51,7 @@ function createMiddleware(module, options = {}) {
 
             getPackageProperties(packagePath, function (properties) {
 
-                const paths = [path.dirname(packagePath)];
+                const paths = [path.posix.dirname(packagePath)];
                 const dependencies = Object.keys(properties.dependencies);
                 if (!dependencies || dependencies.length === 0) {
                     return cb();
@@ -103,7 +103,7 @@ function createMiddleware(module, options = {}) {
 
             let lookup;
             if (packageBase) {
-                lookup = path.join(packageBase, sourceImportUrl);
+                lookup = path.posix.join(packageBase, sourceImportUrl);
             } else {
                 lookup = sourceImportUrl;
             }
@@ -193,13 +193,13 @@ function createMiddleware(module, options = {}) {
 
         let unresolved = file;
         try {
-            file = require.resolve(unresolved);
+            file = require.resolve(unresolved, {paths: [root]});
         } catch  (e) {
             file = unresolved;
         }
 
 
-        let extension = path.extname(file);
+        let extension = path.posix.extname(file);
         transform = extension === '.js' || extension === '.jsm' || extension === '.html' || extension === '.htm';
         const replaceFromPath = replace(/from ('|")(\w|@).*('|")/gm, replaceLogic('from ',  packageLookupHierarchy));
         const replaceImportPath = replace(/import ('|")(\w|@).*('|")/gm, replaceLogic('import ', packageLookupHierarchy));
