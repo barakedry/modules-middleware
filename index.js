@@ -52,7 +52,7 @@ function createMiddleware(module, options = {}) {
             getPackageProperties(packagePath, function (properties) {
 
                 const paths = [path.posix.dirname(packagePath)];
-                const dependencies = Object.keys(properties.dependencies);
+                const dependencies = properties.dependencies ? Object.keys(properties.dependencies) : [];
                 if (!dependencies || dependencies.length === 0) {
                     return cb();
                 }

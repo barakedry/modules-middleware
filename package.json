@@ -1,6 +1,6 @@
 {
   "name": "modules-middleware",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "express middleware for serving npm modules to client side",
   "main": "index.js",
   "scripts": {
